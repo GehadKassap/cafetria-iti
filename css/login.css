@@ -1,0 +1,32 @@
+
+section h1
+{
+    font-size: 95px;
+    line-height: 1.1;
+    color: #2879fe;
+}
+section p 
+{
+    color: #2879fe;
+    font-size: 20px;
+    line-height: 1.75;
+    font-weight: 500;  
+    font-style: italic;
+}
+#form
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%) ;
+    -webkit-transform: translate(-50% , -50%) ;
+    -moz-transform: translate(-50% , -50%) ;
+    -ms-transform: translate(-50% , -50%) ;
+    -o-transform: translate(-50% , -50%) ;
+}
+#singIn
+{
+    height: 100vh;
+    background-color: #343a40;
+   
+}
