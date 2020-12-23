@@ -1,0 +1,25 @@
+.favDrinks img , .allDrinks img 
+{
+   
+    height: 200px; 
+}
+.displayDrinks
+{
+    border: 1px #2879fe solid;
+    border-radius: 5px;
+}
+.displayDrinks .numsOfDrinks
+{
+    
+    display: inline-block;
+    border: 1px solid #2879fe;
+    border-radius: 2px;
+}
+.forborder 
+{
+    border: 2px solid #2879fe;
+}
+#showContainer
+{
+    display: none;
+}
