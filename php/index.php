@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
@@ -33,11 +33,9 @@
     </section>
 
 
-<script src="../js/jquery-3.5.0.js"></script>
-<script src="../js/popper.min.js"></script>
+ <script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.bundle.js"></script>
 <script src="../js/jquery.particleground.min.js"></script>
-
-<script  src="../js/bootstrap.min.js"></script>
 <script src="../js/login.js"></script>
    
 </body>
