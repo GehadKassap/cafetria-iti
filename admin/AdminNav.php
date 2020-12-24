@@ -24,12 +24,11 @@
 </div>
       <ul class="navbar-nav align-items-center d-none d-md-flex mr-5">
                     <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="media align-items-center">
-                                <span class="avatar avatar-sm rounded-circle">
-                      <img  style="width:50px;height:50px; border-radius:50%; vertical-align: middle;border-style: none;"alt="Image placeholder" src="../imgs/admin1.jpg">
-                    </span>
-                                <div class="media-body ml-2 d-none d-lg-block">
+                                <span>
+                           <img  style="width:50px;height:50px; border-radius:50%; vertical-align: middle;border-style: none;"alt="Image placeholder" src="../imgs/admin1.jpg">
+                                 </span>
+                                <div class=" ml-2 d-none d-lg-block">
                                     <span style="color:white;" class="mb-0 text-sm  font-weight-bold">Admin</span>
                                 </div>
                         
