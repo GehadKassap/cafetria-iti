@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-    <?php
-       include __DIR__."/nav.php" ;
-    ?>
+  
 <section class="container-fluid mt-5">
     <div class="row">
         <!------for choice of user------->
@@ -64,36 +62,9 @@
         <!-------------------------->
          <!------for display to user------->
          <div class="col-md-7">
-        <h2 class="pb-2" >your Lastest Drinks </h2>
-             <div class="favDrinks">
-                 <div class="row">
-                     <div class="col-md-4">
-                         <div class="card" >
-                            <img src="../imgs/ColdDrinks/delicious-banana-milkshake.jpg" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Banana with milk Juice</h5>
-                                <p class="card-text"> Lorem ipsum dolor sit amet consectetur<span class="badge badge-danger">30</span></p>
-                            </div>
-
-
-                         </div>
-                         
-                     </div>
-                     <div class="col-md-4">
-                         <div class="card">
-                            <img src="../imgs//HotDrinks/joe-hepburn-EcWFOYOpkpY-unsplash.jpg" alt="" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title"> Cabatshinoe</h5>
-                                <p class="card-text"> Lorem ipsum dolor sit amet consectetur.<span class="badge badge-danger">25</span></p>
-                            </div>
-
-
-                         </div>
-                         
-                     </div>
-               
-                 </div>
-             </div>
+        <div class="displayUsers">
+            <h3>all user</h3>
+        </div>
 
              <div class="allDrinks">
                 <h2 class="pt-2" >All Drinks </h2>
@@ -155,17 +126,7 @@
 
        
     </div>
-
-
-
-
-
-
-
-
-
-    
-</section>
+    </section>
 
 <script src="../js/jquery.js"></script>
 <script src="../js/bootstrap.bundle.js"></script>

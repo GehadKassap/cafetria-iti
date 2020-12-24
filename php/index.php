@@ -18,11 +18,11 @@
         <h1 class="text-center mb-5">Cafeteria</h1>
         <form action="home.php" method="POST"  class="w-100 m-auto">
             <div class="form-group text-center">
-            <input type="text" class=" form-control" placeholder="enter your username">
+            <input id="userName" type="text" class=" form-control" placeholder="enter your username">
                 
             </div>
             <div class="form-group text-center">
-                <input type="password" class="form-control" placeholder="enter your password">
+                <input id="userPass" type="password" class="form-control" placeholder="enter your password">
                 
             </div>
         <button class="btn btn-primary w-100">Login </button>
