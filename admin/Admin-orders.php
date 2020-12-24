@@ -16,8 +16,8 @@ require_once 'AdminNav.php';
 <div class="container">
 <div class="row">
     <div class="col-lg-12">
-        <div class="card my-2 border-info">
-            <div class="card-header bg-info text-white">
+        <div class="card my-2 border-secondary">
+            <div class="card-header bg-secondary text-white">
                 <h3 class="m-0">Submit Orders</h3>
             </div>
             <div class="card-body">

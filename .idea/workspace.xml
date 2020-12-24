@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cb721f37-2f42-4e2e-831d-d01b06a3c366" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/admin/Admin-orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/Admin-orders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/AdminNav.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/AdminNav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/DBconnect.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/DBconnect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/selectorders.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/showorders.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/myorders.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/myorders.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +42,7 @@
       <workItem from="1608753267163" duration="586000" />
       <workItem from="1608799496730" duration="1181000" />
       <workItem from="1608823283266" duration="530000" />
-      <workItem from="1608838017814" duration="718000" />
+      <workItem from="1608838017814" duration="962000" />
     </task>
     <servers />
   </component>
