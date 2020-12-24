@@ -6,7 +6,7 @@ class dbc{
     private $dbname;
 
     protected function connect(){
-        $this->servername="localhost";
+        $this->servername="127.0.0.1";
         $this->username="root";
         $this->password="11122ana gego*";
         $this->dbname="cafeteria";

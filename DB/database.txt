@@ -1,0 +1,66 @@
+-CREATE DATABASE cafeteria
+
+1-CREATE TABLE User(
+Id int PRIMARY KEY AUTO_INCREMENT,
+    user_name varchar(100) unique NOT NULL,
+    user_email varchar(100) unique NOT NULL,
+    user_password varchar(100) NOT NULL,
+    user_profile_picture varchar(200),
+    user_phone varchar(50) ,
+    room_no varchar(50) NOT NULL,
+   user_role VARCHAR(10) NOT NULL,
+    ext int NOT NULL
+);
+
+
+INSERT INTO user 
+(user_name, user_email, user_password , room_no, ext, user_role) 
+VALUES 
+("gehad", "qqwa@gmail.com", "123", "213", "452", "user");
+
+//select stmt for user 
+select * from User where user_role = "user";
+2-CREATE TABLE Product(
+    product_Id int PRIMARY KEY AUTO_INCREMENT,
+    product_name varchar(50) UNIQUE NOT NULL,
+    product_price float NOT NULL,
+    product_picture varchar(50) NOT NULL,
+    catagory_Id int NOT NULL,
+    available bool NOT NULL
+);
+
+3-CREATE TABLE Orders (
+   order_Id int PRIMARY KEY AUTO_INCREMENT,
+   order_date Date NOT NULL NOT NULL,
+    order_action varchar(50) NOT NULL,
+     room VARCHAR(20) NOT NULL,
+    order_price float NOT NULL,
+    user_Id int NOT NULL,
+    status_Id int,
+    notes varchar(200)
+);
+
+4-CREATE TABLE Catagory(
+    catagory_Id int PRIMARY KEY AUTO_INCREMENT,
+    catagory_name varchar(50) UNIQUE NOT NULL
+);
+
+5-CREATE TABLE productOrder(
+    product_Id int,
+    order_Id int,
+    quantity int NOT NULL,
+    primary key(product_Id,order_Id);
+
+8-ALTER TABLE Orders ADD CONSTRAINT FK_order_user FOREIGN KEY (user_ID) REFERENCES User(Id)
+ALTER TABLE product ADD CONSTRAINT FK_order_user FOREIGN KEY (user_ID) REFERENCES User(Id)
+
+10-ALTER TABLE Product ADD CONSTRAINT Product_Category FOREIGN KEY (catagory_ID) REFERENCES catagory(catagory_ID)
+ 
+11-ALTER TABLE productOrder ADD CONSTRAINT FK_productOrder_order FOREIGN KEY (order_ID) REFERENCES Orders(order_ID)
+
+12-ALTER TABLE productOrder ADD CONSTRAINT FK_productOrder_product FOREIGN KEY (product_ID) REFERENCES Product(product_ID)
+
+alter table User ADD user_role VARCHAR(10) NOT NULL;
+
+
+---------------------------------------------------------------------------------------------------------
