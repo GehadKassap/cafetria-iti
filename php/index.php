@@ -67,12 +67,12 @@ if(isset($_POST["register"]))
         {
             $_SESSION['user_name'] = $userName;
             $_SESSION['success'] = "u r logiid in" ; 
-            header("location : home.php") ;
+            header("location: home.php") ;
         }
         else 
         {
                 array_push($errs , "the user not exsist") ;
-                // header("location : index.php") ;
+                // header("location: index.php") ;
 
         }
 
