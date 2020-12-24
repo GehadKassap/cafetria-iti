@@ -1,10 +1,5 @@
 <?php
-include '../php/DBconnect.php';
-include '../php/selectorders.php';
-include '../php/showorders.php';
-
-
-
+require_once 'AdminNav.php';
 
 ?>
 <!DOCTYPE html>
@@ -13,25 +8,54 @@ include '../php/showorders.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders</title>
+
     <link rel="stylesheet" href="../css/all.min.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="../css/login.css">-->
+    <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card my-2 border-info">
+            <div class="card-header bg-info text-white">
+                <h3 class="m-0">Submit Orders</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive" id="showOrders">
+                    <p class="text-center align-self-center lead">Please Wait...</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+ </div>
+</div>
 
 
-<?php
-$orders=new showorders();
-$orders->ShowAllOrders();
-?>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.bundle.js"></script>
+<!--Fetch all orders-->
+<script type="text/javascript">
+    $(document).ready(function (){
+        fetchAllOrders();
+        function fetchAllOrders(){
+            $.ajax({
+                url:'admin-actions.php',
+                method:'post',
+                data:{action:'fetchAllOrders'},
+                success:function (response){
+                    //console.log(response);
+                    $("#showOrders").html(response);
+                }
+            })
 
+         }
+    });
 
-
-<script src="../js/jquery-3.5.0.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/jquery.particleground.min.js"></script>
-
-<script  src="../js/bootstrap.min.js"></script>
-<!--<script src="../js/login.js"></script>-->
+</script>
 </body>
 </html>

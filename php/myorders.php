@@ -15,7 +15,7 @@ include_once "progress.php";
   <label class="mx-3 my-4" style="color:white;"> Date From:</label> <input type="date" placeholder="Date from" id="date-from"> 
      <label class="mx-3 my-4"style="color:white;">Date To:</label> <input type="date" placeholder="Date to" id="date-to">  
      <?php
-       $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+       $mysqli = new mysqli("localhost","root","01098841727","cafateria","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM orders") or die($mysqli->error);
        ?> 
 <table style="background-color:white;" class="table table-striped table-hover">

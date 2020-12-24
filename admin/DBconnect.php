@@ -1,20 +1,22 @@
 <?php
-class dbc{
-    private $servername;
-    private $username;
-    private $password;
-    private $dbname;
+class dbc
+{
 
-    protected function connect(){
-        $this->servername="127.0.0.1";
-        $this->username="root";
-        $this->password="11122ana gego*";
-        $this->dbname="cafeteria";
+    private $dsn = "mysql:host=localhost;dbname=cafeteria";
+    private $dbuser = "root";
+    private $dbpass = "01098841727";
+    public $conn;
 
-        $conn =new mysqli($this->servername,$this->username,$this->password,$this->dbname);
-        return $conn;
+    public function __construct()
+    {
+        try {
+            $this->conn = new PDO($this->dsn, $this->dbuser, $this->dbpass);
+            //var_dump($this->conn);
+        } catch (PDOException $e) {
+            echo "error!!";
+        }
+        return $this->conn;
+
 
     }
-
-
 }
