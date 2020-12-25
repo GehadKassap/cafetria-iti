@@ -77,6 +77,7 @@ if(isset($_POST["register"]))
         if(mysqli_num_rows($result) == 1)
         {
             $_SESSION['user_name'] = $userName;
+
             $_SESSION['success'] = "u have logged in" ; 
             header('location: home.php') ;
         }
@@ -89,7 +90,10 @@ if(isset($_POST["register"]))
                    </div>" ;
                 header('location: index.php') ;
 
+            $_SESSION['success'] = "u r logiid in" ; 
+            header("location: home.php") ;
         }
+     
 
    
     }
