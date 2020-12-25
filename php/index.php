@@ -30,18 +30,23 @@
                 </div> 
             </div>
         <button name="register" class="btn btn-primary w-100">Login </button>
+        <p id="forgetPass" class="text-center mt-2" > <a href="forgetPass.php">Forget Password ?</a> </p>
+
+   
+        
         </form>
         </div>
 </div>
        
-</section>
+</section >
+
 
 <?php
 session_start();
  $userName = "" ;
  $userPass = "" ;
  $errs = array() ;
-$db = mysqli_connect('localhost' , 'root' , '' , 'cafeteria') ;
+$db = mysqli_connect('localhost' , 'root' , '11122ana gego*' , 'cafeteria') ;
 
 #when button is clicked
 if(isset($_POST["register"]))
@@ -49,6 +54,9 @@ if(isset($_POST["register"]))
     // SQL injections 
     $userName = mysqli_real_escape_string($db, $_POST['user_name']); 
     $userPass = mysqli_real_escape_string($db, $_POST['user_pass']);
+    $selectUser = "select * from User where user_name  = '$userName' and  user_password  = '$userPass' ";
+    $result = mysqli_query($db , $selectUser ) ; 
+    
      
     if(empty($userName))
     {
@@ -58,23 +66,34 @@ if(isset($_POST["register"]))
     {
       array_push($errs , "the pass is empty") ;
     }
+    // if($userPass != )
+    // {
+    //   array_push($errs , "the pass is empty") ;
+    // }
     if(count($errs) == 0)
     {
         #$userPass = md5( $userPass) ; //encyrpted password before comparing;
-        $selectUser = "select * from User where user_name  = '$userName' and  user_password  = '$userPass' ";
-        $result = mysqli_query($db , $selectUser ) ; 
+      
         if(mysqli_num_rows($result) == 1)
         {
             $_SESSION['user_name'] = $userName;
-            $_SESSION['success'] = "u r logiid in" ; 
-            header("location: home.php") ;
+
+            $_SESSION['success'] = "u have logged in" ; 
+            header('location: home.php') ;
         }
         else 
         {
-                array_push($errs , "the user not exsist") ;
-                // header("location: index.php") ;
+                #array_push($errs , "the user not exsist") ;
+                echo " <div class='alert alert-danger  mt-1'  role='alert'>
+                  psss!!
+                     </div> 
+                   </div>" ;
+                header('location: index.php') ;
 
+            $_SESSION['success'] = "u r logiid in" ; 
+            header("location: home.php") ;
         }
+     
 
    
     }
@@ -116,7 +135,8 @@ if(isset($_POST["register"]))
 <script src="../js/jquery.particleground.min.js"></script>
 <script src="../js/login.js"></script>
 <script>
-  function validate() {
+  function validate()
+   {
        
        let userName = document.forms["login_form"]["user_name"].value;
        let userPass = document.forms["login_form"]["user_pass"].value;
@@ -143,7 +163,9 @@ if(isset($_POST["register"]))
        }
 
       
-   }
+   };
+
+
 
 </script>
    

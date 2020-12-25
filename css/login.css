@@ -1,10 +1,11 @@
 
-section h1
+section h1 
 {
     font-size: 95px;
     line-height: 1.1;
     color: #2879fe;
 }
+
 section p 
 {
     color: #2879fe;
@@ -12,6 +13,7 @@ section p
     line-height: 1.75;
     font-weight: 500;  
     font-style: italic;
+    
 }
 #form
 {
@@ -26,7 +28,11 @@ section p
 }
 #singIn
 {
-    height: 100vh;
+    min-height: 100vh;
     background-color: #343a40;
    
+}
+ section #form #forgetPass
+{
+    cursor: pointer;
 }
