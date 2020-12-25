@@ -90,8 +90,8 @@ if(isset($_POST["register"]))
                    </div>" ;
                 header('location: index.php') ;
 
-            $_SESSION['success'] = "u r logiid in" ; 
-            header("location: home.php") ;
+            // $_SESSION['success'] = "u r logiid in" ; 
+            // header("location: home.php") ;
         }
      
 
