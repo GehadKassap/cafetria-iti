@@ -8,7 +8,7 @@ class Database {
     {
         try {
            
-            $dsn = "mysql:dbname=".$dbname.";host=".$dbhost.";";
+            $dsn = "mysql:dbname=".$dbname.";host=".$dbhost.";" ;
           
             $this->$connection = new PDO($dsn, $dbuser, $dbpass);
             $this->$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -35,7 +35,7 @@ class Database {
         return $result;
     }
     public function addUserWithPic($username, $email, $password, $room, $ext, $profilePic){
-        $sql = "INSERT INTO user (user_name,user_email, user_password, room_no, ext, user_profile_picture) values(?,?,?,?,?,?)";
+        $sql = "INSERT INTO user (user_name, user_email, user_password, room_no, ext, user_profile_picture) values(?,?,?,?,?,?)";
         $stmt = $this->$connection->prepare($sql);
         try{
             $stmt->execute([$username, $email, $password, $room, $ext, $profilePic]);
@@ -47,10 +47,14 @@ class Database {
         return $result;
     }
 }
-$db = new Database("127.0.0.1","root", "2721997", "cafateria");
+
+
+$db = new Database("localhost","root", "2721997", "cafateria");
 $result=false;
 if (isset($_FILES['profilePic']) && !empty($_FILES['profilePic']['name']) && validateFile() == 1) {
+    
     if (validatePassword($_POST['password'], $_POST['confirmpassword'])) {
+        
         $result = $db->addUserWithPic($_POST['username'], $_POST['email'], $_POST['password'], $_POST['room'], $_POST['ext'], $_FILES['profilePic']['name']);
     } else {
        
@@ -66,12 +70,12 @@ if (isset($_FILES['profilePic']) && !empty($_FILES['profilePic']['name']) && val
     }
 
 }
-// if($result){
-//     header("location: ./showusers.php?success");
-//     $db->closeDBConnection();
-// } else{
-//     header("location: ./addUser.php?error=duplicate");
-// }
+if($result){
+    header("location: ./allUsers.php?success");
+    $db->closeDBConnection();
+} else{
+    header("location: ./addUser.php?error=duplicate");
+}
 
 function validatePassword($pass, $confirm)
 {
