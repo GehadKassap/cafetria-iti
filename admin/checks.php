@@ -2,7 +2,7 @@
 $usersNames=[];
 $dsn="mysql:dbname=cafeteria;dbhost=127.0.0.1;dbport=3306";
     Define("DB_USER","root");
-    Define("DB_PASS","135790000");
+    Define("DB_PASS","");
     $db= new PDO($dsn,DB_USER,DB_PASS);
  if($db){
      $selQry="select * from `User` ";
