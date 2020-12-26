@@ -38,8 +38,10 @@ include_once "progressUser.php";
                      <td><?php echo $row['room_no']; ?></td>
                      <td><?php echo "<img style='width:80px ; height:80px' src='../imgs/$pic'>"; ?></td>
                      <td><?php echo $row['ext']; ?></td>
-                     <td><a href="progressUser.php?edit=<?php echo $row['id']; ?>"
-                         class="btn btn-info">edit</a>
+                     <td>
+                       <form action="addUser.php" method="post">
+                       <input type="hidden" name="edit_id" value="<?php echo $row['Id']?>">
+                       <button type="submit" name="edit_data_btn" class="btn btn-info">edit</button>
                          <a href="progressUser.php?delete=<?php echo $row['Id']; ?>"
                          class="btn btn-danger">delete</a>
                      </td>
