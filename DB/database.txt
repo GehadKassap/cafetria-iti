@@ -13,18 +13,37 @@ Id int PRIMARY KEY AUTO_INCREMENT,
 );
 
 
+
 INSERT INTO user 
 (user_name, user_email, user_password , room_no, ext, user_role) 
 VALUES 
+("ame", "qqq@gmail.com", "123", "213", "452", "user");
+
+
+INSERT INTO Product
+(product_name, product_price, product_picture , catagory_Id, available , product_desc ) 
+VALUES 
+("lemmon", "32", "../imgs/ColdDrinks/homemade-refreshing-summer-lemonade-drink-with-lemon-slices-mint-ice-cubes.jpg", "2",  true , "lorem lorem a7la lemon ");
+
+INSERT INTO user 
+(user_name, user_email, user_password , room_no, ext, user_role) 
+VALUES 
+("ame", "qqq@gmail.com", "123", "213", "452", "user");
+=======
+INSERT INTO user
+(user_name, user_email, user_password , room_no, ext, user_role)
+VALUES
 ("gehad", "qqwa@gmail.com", "123", "213", "452", "user");
 
-//select stmt for user 
+
+//select stmt for user
 select * from User where user_role = "user";
+
 2-CREATE TABLE Product(
     product_Id int PRIMARY KEY AUTO_INCREMENT,
     product_name varchar(50) UNIQUE NOT NULL,
     product_price float NOT NULL,
-    product_picture varchar(50) NOT NULL,
+    product_picture varchar(600) NOT NULL,
     catagory_Id int NOT NULL,
     available bool NOT NULL
 );
@@ -44,6 +63,8 @@ select * from User where user_role = "user";
     catagory_Id int PRIMARY KEY AUTO_INCREMENT,
     catagory_name varchar(50) UNIQUE NOT NULL
 );
+INSERT INTO Catagory (catagory_name) VALUES ("hotdrinks") ;
+INSERT INTO Catagory (catagory_name) VALUES ("colddrinks") ;
 
 5-CREATE TABLE productOrder(
     product_Id int,
@@ -55,12 +76,48 @@ select * from User where user_role = "user";
 ALTER TABLE product ADD CONSTRAINT FK_order_user FOREIGN KEY (user_ID) REFERENCES User(Id)
 
 10-ALTER TABLE Product ADD CONSTRAINT Product_Category FOREIGN KEY (catagory_ID) REFERENCES catagory(catagory_ID)
- 
+
 11-ALTER TABLE productOrder ADD CONSTRAINT FK_productOrder_order FOREIGN KEY (order_ID) REFERENCES Orders(order_ID)
 
 12-ALTER TABLE productOrder ADD CONSTRAINT FK_productOrder_product FOREIGN KEY (product_ID) REFERENCES Product(product_ID)
 
 alter table User ADD user_role VARCHAR(10) NOT NULL;
 
+alter table Product ADD product_desc VARCHAR(300) NOT NULL;
+
 
 ---------------------------------------------------------------------------------------------------------
+
+---randm insertion for testing--
+-- INSERT INTO user
+-- (user_name, user_email, user_password , room_no, ext)
+-- VALUES
+-- ("mohamed", "mm@gmail.com", "446", "16", "23Iduser_name");
+
+-- INSERT INTO Orders
+-- VALUES
+-- (1,'2008-11-11', "done", "200", "1", "1","good order");
+
+-- INSERT INTO Orders
+-- VALUES
+-- (2,'2020-12-20', "done", "200", "2", "2","bad order");
+
+-- INSERT INTO catagory
+-- VALUES
+-- (1,'drink');
+-- INSERT INTO catagory
+-- VALUES
+-- (2,'drink');
+
+--  INSERT INTO product
+--  VALUES
+--  (1,'cofee', 600, "/imgs/nnn.png", 1, 1,112);
+--  INSERT INTO product
+--  VALUES
+--  (2,'cofee', 600, "/imgs/nnn.png", 2, 2,113);
+ -- INSERT INTO productorder
+--  VALUES
+--  (1,1,5);
+-- INSERT INTO productorder
+--  VALUES
+--  (2,2,5);

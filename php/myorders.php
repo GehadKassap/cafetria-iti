@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="../CSS/orders.css">
     <title>myorders</title>
 </head>
-<body style="background-image:url('../imgs/cover.jpg');background-size:cover;">
+<body >
+<?php include_once "nav.php" ?>
 <?php
 include_once "progress.php";
     ?>
@@ -41,31 +42,33 @@ include_once "progress.php";
                  </tr>
                  <?php endwhile; ?>
   </tbody>
-
+  <?php
+       $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+       $result = $mysqli->query("SELECT * FROM product") or die($mysqli->error);
+       ?> 
   <tfoot>
-      <tr>
-    <td> <img class="mt-5"style="width:200px;height:200px; border-radius:50%;" src="../imgs/HotDrinks/cuphot.jpg">
-    <div style="width:80px;height:80px;border-radius:50%;background-color:brown;position:relative; left:152px;top:-215px;"></div>
-    <div style="color:white;position:relative; left:174px;top:-267px;">30L.E</div>
+  <?php
+                 while($row = $result->fetch_assoc()):
+                  $pic= $row['product_picture']; ?>
+      <!-- <tr> -->
+    <td><?php echo " <img class='mt-5'style='width:200px;height:200px; border-radius:50%;' src='../imgs/HotDrinks/$pic'> "; ?>
+    <div class="btn-danger" style='width:80px;height:80px;border-radius:50%;position:relative; left:152px;top:-215px;'></div>
+    <div style='color:white;position:relative; left:174px;top:-267px;'> <?php echo $row['product_price']; ?> L.E</div>
      </td>
-    <td><img class="mt-5" style="width:200px;height:200px; border-radius:50%;" src="../imgs/HotDrinks/cuphot.jpg">
-    <div style="width:80px;height:80px;border-radius:50%;background-color:brown;position:relative; left:152px;top:-215px;"></div>
-    <div style="color:white;position:relative; left:174px;top:-267px;">30L.E</div>
-</td>
-    <td><img class="mt-5" style="width:200px;height:200px;  border-radius:50%;" src="../imgs/HotDrinks/cuphot.jpg">
-    <div style="width:80px;height:80px;border-radius:50%;background-color:brown;position:relative; left:152px;top:-215px;"></div>
-    <div style="color:white;position:relative; left:174px;top:-267px;">30L.E</div>
-</td>
-<td><img class="mt-5" style="width:200px;height:200px;  border-radius:50%;" src="../imgs/HotDrinks/cuphot.jpg">
-    <div style="width:80px;height:80px;border-radius:50%;background-color:brown;position:relative; left:152px;top:-215px;"></div>
-    <div style="color:white;position:relative; left:174px;top:-267px;">30L.E</div>
-</td>
-</tr>       
+<!-- </tr>      -->
+<?php endwhile; ?>  
 </tfoot>
 </table>
+
+<?php
+       $result = $mysqli->query("SELECT sum(product_price) AS total FROM product") or die($mysqli->error);
+       ?> 
+       <?php  while($row = $result->fetch_assoc()): ?>
+<div style=" height:100px;background-color:white; color:brown;font-size:55px;text-align:center;" class=" mb-5">Total : <?php echo $row['total']; ?></div>
    
 
-</div>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</div><?php endwhile; ?> 
+<script src="bootstrap.bundle.min.js"></script>
+<script src="jquery.js"></script>
 </body>
 </html>
