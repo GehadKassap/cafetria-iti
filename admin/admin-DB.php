@@ -32,4 +32,26 @@ where u.Id=o.user_Id order by order_date desc;";
         $row=$result->fetchAll(PDO::FETCH_ASSOC);
         return $row;
     }
+    // show order details
+    public function showOrderDetails($id){
+        $sql="select c.catagory_name, order_Id,product_name,product_price,product_picture ,order_price, user_name
+ from orders o 
+ join user on Id=o.user_Id 
+ join product p  on p.user_ID=o.user_Id 
+ join catagory c on p.catagory_Id=c.catagory_Id  where order_Id=:id;";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+        $result=$stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    // cancel order
+    public function OrderCancel($id){
+        $sql="Delete from orders where order_Id:id ;";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->execute(['id'=>$id]);
+        return true;
+
+
+    }
+
 }
