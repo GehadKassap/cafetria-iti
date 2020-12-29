@@ -81,11 +81,22 @@ if (isset($_POST["save"])){
     $myArray = array(
        "product_name" => $_POST['product_name'],
        "product_price" => $_POST['product_price'],
-       //"product_name"=>$_POST['AddProName'], //AddProCategory
-       "product_picture" => $_POST['product_picture']
+    //    "product_name"=>$_POST['AddProName'], //AddProCategory
+       "product_picture" => $_POST["product_picture"],//"product_picture" => $_FILES["product_picture"]['name'],
     );
 
     if($obj->insert_record("Product",$myArray)){
+        header("location:AddProducts.php?msg=Record Inserted Successfully");
+    }
+}
+
+if (isset($_POST["Add"])){
+    $myArray = array(
+       "catagory_name" => $_POST['catagory_name']
+       
+    );
+
+    if($obj->insert_record("Catagory",$myArray)){
         header("location:index.php?msg=Record Inserted Successfully");
     }
 }

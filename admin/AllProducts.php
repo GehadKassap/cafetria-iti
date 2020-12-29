@@ -16,15 +16,25 @@ include "AddProductAction.php";
     <title>Document</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
         .badge{
             font-size: 18px;
             color: rgb(71, 167, 212);
         }
       
-        .container-lg{
-        margin-top: 7rem;
-        }
+        /* .container-lg{
+        margin-top: 1rem;
+        position:absolute;
+       top:6rem;
+       right:8rem;
+        }  */
+    #add{
+        position:absolute;
+        right:70px;
+    }
     
         td{
             font-weight: bold;
@@ -39,16 +49,20 @@ include "AddProductAction.php";
 </head>
 <body>
 
+<?php
 
+include "AdminNav.php";
+
+?><br><br><br>
     <section id="MainSection" >
         <div class="container-lg">
             <div class="table ">
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
-                            <div class="col-sm-8 "><h2>All Products</h2></div>
-                            <div class="col-sm-4 mb-1">
-                                <a href="AddProducts.php" class="badge badge-light ">Add Product</a>
+                            <div class="text-dark"><h2>All Products</h2></div>
+                            <div class="col-sm-4 mb-2" id="add">
+                                <a href="AddProducts.php" class="badge badge-light  " id="add">Add Product</a>
                        
                             </div>
                         </div>
@@ -75,7 +89,7 @@ include "AddProductAction.php";
                                    <td class="text-center"><?php echo $row["product_Id"]; ?></td>
                                       <td class="text-center"><?php echo $row["product_name"]; ?></td>
                                       <td class="text-center"><?php echo $row["product_price"]; ?></td>
-                                      <td class="text-center"><?php echo '<img src="data:image;base64,'.base64_encode($row['product_pictureproduct']).'" alt="Image" style="width:100px; height:100px;" >' ; ?> </td>
+                                      <td class="text-center"><img src="../imgs/ColdDrinks/<?php echo $row["product_picture"]; ?>" style="width:70px;height:70px;" > </td>
                                       <td class="text-center">
                                         <!-- <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a> -->
                                         <a href="AddProducts.php?update=1&product_Id=<?php echo $row["product_Id"]; ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons FIcon">&#xE254;</i></a>
