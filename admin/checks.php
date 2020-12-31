@@ -1,26 +1,231 @@
-<?php 
-$usersNames=[];
-$dsn="mysql:dbname=cafeteria;dbhost=127.0.0.1;dbport=3306";
-    Define("DB_USER","root");
-    Define("DB_PASS","");
-    $db= new PDO($dsn,DB_USER,DB_PASS);
- if($db){
-     $selQry="select * from `User` ";
-       $stmt=$db->prepare($selQry);
-    //    $stmt->bindParam(":sname",$name);
-    //    $stmt->bindParam(":sid",$id);
-       $stmt->execute();
-       $users=$stmt->fetchAll(PDO::FETCH_ASSOC);
-    //    var_dump($users);
-       foreach($users as $user){
-         $usersNames[]=$user['user_name'];
-       }
-      var_dump($usersNames);
-     }else{
-         echo "not connected";
-        }
+<!DOCTYPE html>
+<html>
 
-        
+<head>
+    <meta charset="utf-8" />
+    <title>Checks Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/checks.css">
 
- 
- 
+</head>
+
+<body>
+    <main class="checks">
+        <section class="main-padding">
+            <div class="container">
+                <h1>Checks</h1>
+                <!-- date-picker -->
+                <form action="checks.php" method="POST">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="from-group">
+                                <label for="start">Start date:</label>
+                                <input type="date" class="form-control start" name="start" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="end">End date:</label>
+                                <input type="date" class="form-control end" name="end" />
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="select-user from-group">
+                                <select name="users" class="form-control">
+                                    <?php
+                                    $dsn = "mysql:dbname=cafeteria;dbhost=127.0.0.1;dbport=3306";
+                                    Define("DB_USER", "root");
+                                    Define("DB_PASS", "135790000");
+                                    $db = new PDO($dsn, DB_USER, DB_PASS);
+                                    if ($db) {
+                                        $sqlQuery = "select u.user_name,u.Id,sum(p.product_price*op.quantity) as total from Orders as o,productOrder as op ,Product as p , User as u where p.product_Id=op.product_Id and o.order_Id=op.order_Id and u.Id=o.user_Id group by o.user_Id order by total desc";
+                                        $stmt = $db->prepare($sqlQuery);
+                                        $stmt->execute();
+                                        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                        for ($i = 0; $i < count($users); $i++) {
+                                            $usersNames[] = $users[$i]['user_name'];
+                                            $usersTotal[] = $users[$i]['total'];
+                                            $usersIds[] = $users[$i]['Id'];
+                                        }
+                                        // get user orders data
+
+                                        for ($i = 1; $i < count($users); $i++) {
+                                            $ordersQuery = "SELECT * FROM `Orders` WHERE `user_Id`= $i";
+                                            $ord = $db->prepare($ordersQuery);
+                                            // $ord->bindParam($i, PDO::PARAM_INT);
+                                            $ord->execute();
+                                            $userOrders = $ord->fetchAll(PDO::FETCH_ASSOC);
+                                            $orderData[$i - 1] = $userOrders;
+                                        }
+                                        for ($i = 0; $i < count($orderData); $i++) {
+                                            $orderDate[] = $orderData[$i]['order_date'];
+                                        }
+
+                                        // display users
+                                        foreach ($usersNames as $item) {
+                                            echo "<option value='strtolower($ $item)'>$item</option>";
+                                        }
+                                        // $ordersQuery = "select * from orders";
+                                        // $ord = $db->prepare($ordersQuery);
+                                        // $ord->execute();
+                                        // $orders = $ord->fetchAll(PDO::FETCH_ASSOC);
+                                        // foreach ($orders as $ordr) {
+                                        // $orderDate[] = 
+                                        // $usersAmount[] = $ordr['order_price'];
+                                        // $orderId[] = $ordr['order_id'];
+                                        // }
+                                    } else {
+                                        echo "<option value='user'>no users</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-success">filter</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- ./date-picker -->
+            </div>
+        </section>
+
+        <section class="main-padding">
+            <div class="container">
+                <!-- user-checks -->
+                <div class="user-checks">
+                    <!-- ! table one  -->
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- * first user -->
+                            <?php
+                            for ($i = 0; $i < count($users); $i++) {
+                                echo "<tr class='user'>
+                            <td>
+                                <i class='fa fa-plus-square'></i>
+                                <span>$usersNames[$i]</span>
+                            </td>
+                            <td>$usersTotal[$i]</td>
+                        </tr>
+                        <tr>
+                            <!-- ! table two  -->
+
+                            <td colspan='2'>
+                                <table class='table'>
+                                    <thead class='thead-light'>
+                                        <tr>
+                                            <th scope='col'>order date</th>
+                                            <th scope='col'>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                        <tr class='user-data'>
+                                            <td>
+                                                <i class='fa fa-plus-square'></i>
+                                                <span>
+                                              
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span>55</span> EGP
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <!-- ! table three -->
+                                            <td colspan='2'>
+                                                <div class='row'>
+                                                    <!-- each-item -->
+                                                    <div class='col-sm-3'>
+                                                        <div class='each-order'>
+                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
+                                                            <h5>tea</h5>
+                                                            <input type='text' name='tea' value='15' hidden />
+                                                            <span>15 LE</span>
+                                                            <span>2</span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- each-item -->
+                                                    <div class='col-sm-3'>
+                                                        <div class='each-order'>
+                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
+                                                            <h5>tea</h5>
+                                                            <input type='text' name='tea' value='15' hidden />
+                                                            <span>15 LE</span>
+                                                            <span>3</span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- each-item -->
+                                                    <div class='col-sm-3'>
+                                                        <div class='each-order'>
+                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
+                                                            <h5>tea</h5>
+                                                            <input type='text' name='tea' value='15 ' hidden />
+                                                            <span>15 LE</span>
+                                                            <span>5</span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- each-item -->
+                                                    <div class='ol-sm-3'>
+                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
+                                                            <h5>tea</h5>
+                                                            <input type='text' name='tea' value='15' hidden />
+                                                            <span>15 LE</span>
+                                                            <span>1</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <!-- ! ./table three -->
+                                        </tr>
+                        
+                                    </tbody>
+                                </table>
+                            </td>
+                            <!-- ! ./table two  -->
+                        </tr>";
+                            }  ?>
+                            <!-- * second user -->
+                            <!-- <tr class="user">
+                            <td><i class="fa fa-plus-square"></i> <span> esraa</span></td>
+                            <td>55</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                second user data
+                            </td>
+                        </tr>
+                        <!-- * third user -->
+                            <!-- <tr class="user">
+                            <td><i class="fa fa-plus-square"></i> <span> abeer</span></td>
+                            <td>20</td>
+                        </tr> -->
+                            <!-- <tr>
+                            <td colspan="2">
+                                third user data
+                            </td>
+                        </tr> -->
+                        </tbody>
+                    </table>
+                    <!-- ! ./table one  -->
+                </div>
+            </div>
+            <!-- ./user-checks -->
+        </section>
+    </main>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/checks.js"></script>
+</body>
+
+</html>

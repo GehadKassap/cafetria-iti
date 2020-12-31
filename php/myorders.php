@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../CSS/orders.css">
     <title>myorders</title>
 </head>
-<body style="background-image:url('../imgs/cover.jpg');background-size:cover;">
-<?php include_once "../admin/AdminNav.php" ?>
+<body >
+<?php include_once "nav.php" ?>
 <?php
 include_once "progress.php";
     ?>
@@ -16,7 +16,7 @@ include_once "progress.php";
   <label class="mx-3 my-4" style="color:white;"> Date From:</label> <input type="date" placeholder="Date from" id="date-from"> 
      <label class="mx-3 my-4"style="color:white;">Date To:</label> <input type="date" placeholder="Date to" id="date-to">  
      <?php
-       $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+       $mysqli = new mysqli("localhost","root","01098841727","cafateria","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM orders") or die($mysqli->error);
        ?> 
 <table style="background-color:white;" class="table table-striped table-hover">
@@ -52,7 +52,7 @@ include_once "progress.php";
                   $pic= $row['product_picture']; ?>
       <!-- <tr> -->
     <td><?php echo " <img class='mt-5'style='width:200px;height:200px; border-radius:50%;' src='../imgs/HotDrinks/$pic'> "; ?>
-    <div style='width:80px;height:80px;border-radius:50%;background-color:brown;position:relative; left:152px;top:-215px;'></div>
+    <div class="btn-danger" style='width:80px;height:80px;border-radius:50%;position:relative; left:152px;top:-215px;'></div>
     <div style='color:white;position:relative; left:174px;top:-267px;'> <?php echo $row['product_price']; ?> L.E</div>
      </td>
 <!-- </tr>      -->
