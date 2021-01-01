@@ -1,6 +1,8 @@
+<?php
+include_once 'test.php';
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <title>Checks Page</title>
@@ -35,50 +37,32 @@
                             <div class="select-user from-group">
                                 <select name="users" class="form-control">
                                     <?php
-                                    $dsn = "mysql:dbname=cafeteria;dbhost=127.0.0.1;dbport=3306";
-                                    Define("DB_USER", "root");
-                                    Define("DB_PASS", "135790000");
-                                    $db = new PDO($dsn, DB_USER, DB_PASS);
-                                    if ($db) {
-                                        $sqlQuery = "select u.user_name,u.Id,sum(p.product_price*op.quantity) as total from Orders as o,productOrder as op ,Product as p , User as u where p.product_Id=op.product_Id and o.order_Id=op.order_Id and u.Id=o.user_Id group by o.user_Id order by total desc";
-                                        $stmt = $db->prepare($sqlQuery);
-                                        $stmt->execute();
-                                        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                                        for ($i = 0; $i < count($users); $i++) {
-                                            $usersNames[] = $users[$i]['user_name'];
-                                            $usersTotal[] = $users[$i]['total'];
-                                            $usersIds[] = $users[$i]['Id'];
-                                        }
-                                        // get user orders data
-
-                                        for ($i = 1; $i < count($users); $i++) {
-                                            $ordersQuery = "SELECT * FROM `Orders` WHERE `user_Id`= $i";
-                                            $ord = $db->prepare($ordersQuery);
-                                            // $ord->bindParam($i, PDO::PARAM_INT);
-                                            $ord->execute();
-                                            $userOrders = $ord->fetchAll(PDO::FETCH_ASSOC);
-                                            $orderData[$i - 1] = $userOrders;
-                                        }
-                                        for ($i = 0; $i < count($orderData); $i++) {
-                                            $orderDate[] = $orderData[$i]['order_date'];
-                                        }
+                                        // for ($i = 1; $i < count($users); $i++) {
+                                        //     $ordersQuery = "SELECT * FROM `Orders` WHERE `user_Id`= $i";
+                                        //     $ord = $db->prepare($ordersQuery);
+                                        //     // $ord->bindParam($i, PDO::PARAM_INT);
+                                        //     $ord->execute();
+                                        //     $userOrders = $ord->fetchAll(PDO::FETCH_ASSOC);
+                                        //     $orderData[$i - 1] = $userOrders;
+                                        // }
+                                        // for ($i = 0; $i < count($orderData); $i++) {
+                                        //     $orderDate[] = $orderData[$i]['order_date'];
+                                        // }
 
                                         // display users
-                                        foreach ($usersNames as $item) {
-                                            echo "<option value='strtolower($ $item)'>$item</option>";
+                                        foreach ($usersNames as $userName) {
+                                            echo "<option value='strtolower($ $userName)'>$userName</option>";
                                         }
                                         // $ordersQuery = "select * from orders";
                                         // $ord = $db->prepare($ordersQuery);
                                         // $ord->execute();
                                         // $orders = $ord->fetchAll(PDO::FETCH_ASSOC);
                                         // foreach ($orders as $ordr) {
-                                        // $orderDate[] = 
+                                        // $orderDate[] =
                                         // $usersAmount[] = $ordr['order_price'];
                                         // $orderId[] = $ordr['order_id'];
                                         // }
-                                    } else {
-                                        echo "<option value='user'>no users</option>";
-                                    }
+
                                     ?>
                                 </select>
                             </div>
@@ -107,13 +91,13 @@
                         <tbody>
                             <!-- * first user -->
                             <?php
-                            for ($i = 0; $i < count($users); $i++) {
-                                echo "<tr class='user'>
+                            for ($i = 0; $i < count($users); $i++) { ?>
+                            <tr class='user'>
                             <td>
                                 <i class='fa fa-plus-square'></i>
-                                <span>$usersNames[$i]</span>
+                                <span><?= $usersNames[$i] ?></span>
                             </td>
-                            <td>$usersTotal[$i]</td>
+                            <td><?=$usersTotal[$i]?></td>
                         </tr>
                         <tr>
                             <!-- ! table two  -->
@@ -127,18 +111,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
+                                      <?php for($j=0;$j<count(end($users[$i]));$j++){?>
                                         <tr class='user-data'>
                                             <td>
                                                 <i class='fa fa-plus-square'></i>
                                                 <span>
-                                              
+                                                <?= end($users[$i])[$j]['order_date'] ?>
                                                 </span>
                                             </td>
                                             <td>
-                                                <span>55</span> EGP
+                                                <?= end($users[$i])[$j]['quantity'] ?>
                                             </td>
                                         </tr>
+                                        <?php }  ?>
+
+
+
+
                                         <tr>
                                             <!-- ! table three -->
                                             <td colspan='2'>
@@ -186,13 +175,13 @@
                                             </td>
                                             <!-- ! ./table three -->
                                         </tr>
-                        
+
                                     </tbody>
                                 </table>
                             </td>
                             <!-- ! ./table two  -->
-                        </tr>";
-                            }  ?>
+                        </tr>
+                            <?php }  ?>
                             <!-- * second user -->
                             <!-- <tr class="user">
                             <td><i class="fa fa-plus-square"></i> <span> esraa</span></td>
