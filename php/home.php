@@ -1,6 +1,9 @@
 
 
+<?php 
+$db = mysqli_connect('localhost' , 'root' , '11122ana gego*' , 'cafeteria') ;
 
+?>
 
 
 <!DOCTYPE html>
@@ -21,11 +24,11 @@
     <div class="row">
         <!------for choice of user------->
         <div class="col-md-5 " >
-            <div id="showContainer" method="POST" action="">
-            <!--this part for display drinks when user click on img-->
-            <div class="displayDrinks p-3">
-                <div class="row">
-                    <div class="col-md-12" id="content">
+            <div id="showContainer" method="POST" action="" >
+            <!--this part for display drinks when user clicks="d-none" on img-->
+            <div class="displayDrinks p-3 ">
+                <div class="row" id="choise">
+                    <!-- <div class="col-md-12" id="content">
                        <span class="drinkName" name="name"></span>
                        <span class="numsOfDrinks px-3 py-2">1</span>
                        <span><i class="fas fa-plus " id="plus"></i></span>
@@ -33,7 +36,7 @@
                        <span class="priceOfDrinks p-2"></span>
                         <span> <i class="fas fa-times fa-2x " id="close"></i></span>
                         
-                     </div>
+                     </div> -->
               
                      <!-- <?php
 session_start();
@@ -111,9 +114,9 @@ session_start();
                 <div class="row">
                   <?php
                  
-                 $db = mysqli_connect('localhost' , 'root' , '11122ana gego*' , 'cafeteria') ;
                  $selectDrink = "select * from Product " ; 
                  $result = mysqli_query($db , $selectDrink);
+                 $i =1 ; 
                  if(mysqli_num_rows($result) > 0)
                  {
                     while($row = mysqli_fetch_array($result))
@@ -122,10 +125,11 @@ session_start();
                         
                     <div class="col-md-4 mb-2">
                         <div class="card" >
-                           <img src="<?php echo $row["product_picture"]; ?>" alt="" class="card-img-top">
+                           <img src="<?php echo $row["product_picture"]; ?>" alt="" class="card-img-top" data-target="#<?php echo $row["product_Id"] ?>">
                            <div class="card-body">
-                               <h5 class="card-title"> <?php echo $row["product_name"]; ?></h5>
-                               <p class="card-text"> <?php echo $row["product_desc"]; ?><span class="badge badge-danger ml-1 p-2"><?php echo $row["product_price"] . " L.E"; ?></span></p>
+                               <span><?php  echo $i++ ;  ?></span>
+                               <h5 id="drinkname" class="card-title"> <?php echo $row["product_name"]; ?></h5>
+                               <p class="card-text"> <?php echo $row["product_desc"]; ?><span class="badge badge-danger ml-2 p-2"><?php echo $row["product_price"] ; ?></span></p>
                            </div>
 
 
@@ -168,6 +172,7 @@ session_start();
 
     
 </section>
+
 
 <script src="../js/jquery.js"></script>
 <script src="../js/bootstrap.bundle.js"></script>

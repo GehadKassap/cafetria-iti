@@ -10,7 +10,12 @@
 .displayDrinks
 {
     border: 1px #2879fe solid;
-    border-radius: 5px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    
 }
 .displayDrinks span  i 
 {
@@ -32,7 +37,7 @@
     border: 1px solid #2879fe;
     background-color:  #2879fe;;
 }
-#showContainer
+.displayDrinks
 {
     display: none;
 }
