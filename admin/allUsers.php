@@ -23,7 +23,7 @@ include_once "progressUser.php";
 </div>
 </div>
 <?php
-       $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+       $mysqli = new mysqli("localhost","root","2721997","cafe","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM user") or die($mysqli->error);
        ?> 
 <table style="background-color:white;" class="table table-striped table-hover">

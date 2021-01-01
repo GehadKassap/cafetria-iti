@@ -1,5 +1,5 @@
 <?php
-$connection =new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+$connection =new mysqli("localhost","root","2721997","cafe","3306") or die(mysqli_error($mysqli));
 if(isset($_POST['update_btn'])){
     $edit_id= $_POST['edit_id'];
     $edit_name=$_POST['username'];

@@ -16,7 +16,7 @@ include_once "progress.php";
   <label class="mx-3 my-4" style="color:white;"> Date From:</label> <input type="date" placeholder="Date from" id="date-from"> 
      <label class="mx-3 my-4"style="color:white;">Date To:</label> <input type="date" placeholder="Date to" id="date-to">  
      <?php
-       $mysqli = new mysqli("localhost","root","01098841727","cafateria","3306") or die(mysqli_error($mysqli));
+       $mysqli = new mysqli("localhost","root","2721997","cafe","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM orders") or die($mysqli->error);
        ?> 
 <table style="background-color:white;" class="table table-striped table-hover">
@@ -35,7 +35,7 @@ include_once "progress.php";
                      <td><?php echo $row['order_date']; ?></td>
                      <td><?php echo $row['status_Id']; ?></td>
                      <td><?php echo $row['order_action']; ?></td>
-                     <?php if ($row['status_Id']==3333): ?>
+                     <?php if ($row['status_Id']=="progcessing"): ?>
                      <td>
                          <a href="progress.php?delete=<?php echo $row['order_Id']; ?>"
                          class="btn btn-danger">delete</a> 
@@ -48,7 +48,7 @@ include_once "progress.php";
                  <?php endwhile; ?>
   </tbody>
   <?php
-       $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+       $mysqli = new mysqli("localhost","root","2721997","cafe","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM product") or die($mysqli->error);
        $result2 = $mysqli->query("SELECT * FROM productorder") or die($mysqli->error);
        ?> 
@@ -58,7 +58,7 @@ include_once "progress.php";
                   $pic= $row['product_picture']; ?>
                   
       <!-- <tr> -->
-    <td><?php echo " <img class='mt-5'style='width:200px;height:200px; border-radius:50%;' src='../imgs/HotDrinks/$pic'> "; ?>
+    <td><?php echo " <img class='mt-5'style='width:200px;height:200px; border-radius:50%;' src='../imgs/$pic'> "; ?>
     <div class="btn-danger" style='width:80px;height:80px;border-radius:50%;position:relative; left:152px;top:-215px;'></div>
     <div style='color:white;position:relative; left:174px;top:-267px;'> <?php echo $row['product_price']; ?> L.E</div>
     <div style='font-size:35px;color:red;position:relative; left:25px;top:-92px;'> <?php echo $row['product_name']; ?></div> 
