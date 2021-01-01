@@ -12,7 +12,16 @@
 include_once "progressUser.php";
     ?>
 <div class="container">
-<h2 class= "mx-5 my-4" style="color:white;">All Users</h2>
+  <div class="container ">
+  <div class="row ">
+    <div class="col-lg-6 col-md-4 col-sm-3 d-flex justify-content-start">
+<h2 class= " my-4" style="color:white;">All Users</h2>
+</div>
+<div class="col-lg-6 col-md-4 col-sm-3  my-4 d-flex justify-content-end">
+<button  type="button" class="btn btn-danger"><a style="color:white; text-decoration:none;" href="addUser.php">Add user</a></button>
+</div>
+</div>
+</div>
 <?php
        $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM user") or die($mysqli->error);
@@ -49,8 +58,8 @@ include_once "progressUser.php";
                  <?php endwhile; ?>
 </tbody>
 
-
+<script src="../js/jquery.js"></script>
 <script  src="../js/bootstrap.min.js"></script>
-<script src="jquery.js"></script>
+
 </body>
 </html>
