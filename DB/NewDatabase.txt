@@ -1,0 +1,70 @@
+-- drop database cafeteria;
+CREATE DATABASE cafe;
+
+ CREATE TABLE User(
+ Id int PRIMARY KEY AUTO_INCREMENT,
+    user_name varchar(100) unique NOT NULL,
+    user_email varchar(100) unique NOT NULL,
+    user_password varchar(100) NOT NULL,
+    user_profile_picture varchar(200),
+    user_phone varchar(50) ,
+    room_no varchar(50) NOT NULL,
+    user_role VARCHAR(10),
+    ext int NOT NULL
+);
+
+CREATE TABLE Product(
+    product_Id int PRIMARY KEY AUTO_INCREMENT,
+    product_name varchar(50) UNIQUE,
+    product_price float NOT NULL,
+    product_picture varchar(600),
+    product_desc varchar(100),
+    catagory_Id int,
+    user_Id int,
+    pro_status varchar(100) 
+);
+
+INSERT INTO product (product_name , product_price , product_picture, product_desc  , user_Id ,pro_status  )
+values 
+("nascafi" , "20" , "../imgs/cover.jpg" , "loremloremlorem" , "1" , "avaiable" );
+CREATE TABLE Orders (
+    order_Id int PRIMARY KEY AUTO_INCREMENT,
+    order_date Date,
+    order_action varchar(50),
+    order_price int,
+    user_Id int,
+    status_Id varchar(50),
+    notes varchar(100)
+);
+
+CREATE TABLE Catagory(
+    catagory_Id int PRIMARY KEY AUTO_INCREMENT,
+    catagory_name varchar(50)
+);
+
+
+CREATE TABLE productOrder(
+    product_Id int,
+    order_Id int,
+    quantity int,
+    primary key(product_Id,order_Id)
+);
+
+ALTER TABLE Orders ADD CONSTRAINT FK_order_user FOREIGN KEY (user_Id) REFERENCES User(Id);
+-- alter table product add column user_ID int;
+ALTER TABLE Product ADD CONSTRAINT FK_Product_user FOREIGN KEY (user_Id) REFERENCES User(Id);
+
+ALTER TABLE Product ADD CONSTRAINT Product_Category FOREIGN KEY (catagory_Id) REFERENCES Catagory(catagory_Id);
+ 
+ALTER TABLE productOrder ADD CONSTRAINT FK_productOrder_order FOREIGN KEY (order_Id) REFERENCES Orders(order_Id);
+
+ALTER TABLE productOrder ADD CONSTRAINT FK_productOrder_product FOREIGN KEY (product_Id) REFERENCES Product(product_Id);
+
+
+-- drop table product;
+
+-- drop database cafeteria;
+
+INSERT INTO product ()
+INSERT INTO user (user_name, user_email, user_password, room_no, ext, user_role) VALUES ("gehwad", "aaewa@aaa.com", "1qw", "1", "2", "user");
+INSERT INTO user (user_name, user_email, user_password, room_no, ext, user_role,user_profile_picture) VALUES ("", "", "", "", "", "user");

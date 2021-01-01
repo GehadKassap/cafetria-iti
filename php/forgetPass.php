@@ -78,7 +78,7 @@ if(mysqli_query($db , "update User set user_password = '$userPass' where user_em
        echo  "<div class='alert alert-primary w-25 text-center  mt-1 d-block' id='forgetValidate' role='alert'>
                password Updated successuflly! 
                 </div> ";
-                header('location: home.php');
+                header('location: homefinal.php');
 }
 }
     /************************************** */

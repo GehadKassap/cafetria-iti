@@ -1,12 +1,13 @@
 jQuery(document).ready(function(){
 
     jQuery("button").click(function(){
+      
        let container = `
        
        <tr class="content">
-       <td class=" drinkName bg-dark   w-25" name="namedrink" id="namedrink" > </td>
-       <td class="drinkPrice bg-danger w-25 "></td>
-       <td class=" drinkQuantity bg-dark w-25">  <input type="text" id="numberDrink" name="numberDrink" placeHolder="QUANTITY?" class="form-control  " > </td>
+       <td class=" drinkName w-25" name="namedrink" id="namedrink" > </td>
+       <td class="drinkPrice  w-25 "></td>
+       <td class=" drinkQuantity  w-25">  <input type="text" id="numberDrink" name="numberDrink" placeHolder="QUANTITY?" class="form-control" > </td>
        </tr>
        
        `;
@@ -60,41 +61,41 @@ jQuery(document).ready(function(){
     })
 
     //  console.log(typeof numberOfDrink);
-    jQuery('insertForm').on('submit' ,function(event){
-      event.preventDefaults();
-      if(jQuery("#namedrink").text()== "")
-      {
-             alert("chose drink name");
+//     jQuery('insertForm').on('submit' ,function(event){
+//       event.preventDefaults();
+//       if(jQuery("#namedrink").text()== "")
+//       {
+//              alert("chose drink name");
 
-      }
-      else if(jQuery("#numberDrink").val()== "")
-      {
-             alert("chose Quantity");
+//       }
+//       else if(jQuery("#numberDrink").val()== "")
+//       {
+//              alert("chose Quantity");
 
-      }
+//       }
       
-      else if(jQuery("#room").val()== "")
-      {
-             alert("chose Room");
+//       else if(jQuery("#room").val()== "")
+//       {
+//              alert("chose Room");
 
-      }
-      else 
-      {
-        jQuery.ajax({
-          url:"",
-          method: "POST",
-          data:jQuery('#insertForm').serilize(),
-          success:function(data)
-          {
-            jQuery("#insertData")[0].reset()
-           jQuery("#DrinksData").html(data)
-          }
+//       }
+//       else 
+//       {
+//         jQuery.ajax({
+//           url:"",
+//           method: "POST",
+//           data:jQuery('#insertForm').serilize(),
+//           success:function(data)
+//           {
+//             jQuery("#insertData")[0].reset()
+//            jQuery("#DrinksData").html(data)
+//           }
 
-        })
-      }
+//         })
+//       }
 
 
- });
+//  });
 
       // 4-for close this drinkorder :
       let closeHolder =  jQuery("#closeBtn");
