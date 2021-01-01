@@ -79,7 +79,7 @@ if(isset($_POST["register"]))
             $_SESSION['user_name'] = $userName;
 
             $_SESSION['success'] = "u have logged in" ; 
-            header('location: home.php') ;
+            header('location: homefinal.php') ;
         }
         else 
         {

@@ -15,7 +15,7 @@
 </head>
 <body>
   
-
+ <?php  include ('AdminNav.php') ; ?>
 <section class="container-fluid mt-5">
     <div class="row">
         <!------for choice of user------->
@@ -75,7 +75,7 @@ session_start();
         <!-------------------------->
          <!------for display to user------->
          <div class="col-md-7">
-        <h2 class="pb-2" >order for use </h2>
+        <h2 class="pb-2 font-italic" >order for use </h2>
             <div class="displayUsers">
             <select class="form-select w-75" aria-label='Default select example'>
 
@@ -117,7 +117,7 @@ session_start();
             </div>
           
              <div class="allDrinks mt-4">
-                <h2 class="pt-2 pb-3" >All Drinks </h2>
+                <h2 class="pt-2 pb-3 font-italic" >All Drinks </h2>
                 <div class="row">
                   <?php
                  

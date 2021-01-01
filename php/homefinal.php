@@ -1,5 +1,5 @@
 <?php  
-$db = mysqli_connect('localhost' , 'root' , '11122ana gego*' , 'cafeteria') ;
+$db = mysqli_connect('localhost' , 'root' , '11122ana gego*' , 'cafe') ;
 $selectDrink = "select * from Product " ; 
 $selectOrder = "select * from Orders where order_Id = '1'" ; 
 $result = mysqli_query($db , $selectDrink);
@@ -12,7 +12,7 @@ $i =1 ;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../css/all.min.css">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
@@ -28,7 +28,9 @@ $i =1 ;
     #we 
     {
         border : 1px solid red ;
+        
     }
+
 
     </style>
 </head>
@@ -37,19 +39,19 @@ $i =1 ;
 <div class="container mt-5">
   <div class="row">
       <!--- start of order details---->
-    <div class="col-md-5 mt-5 pt-4 mb-4 " id="we">
+    <div class="col-md-5 mt-5 p-4 mb-4 " id="we">
        <form class="orderDetails" id="insertForm" action="" method="POST">
          <table class="w-100" >
          <tbody>
            <tr >
-           <td class="bg-danger text-center  w-25"> <span><b class="text-bold mr-3">close All Order</b> <i class="fas fa-times fa-2x " id="closeBtn"></i></span></td>
+           <td class="bg-danger text-center  w-25"> <span><b class="text-bold mr-3 font-italic">close All Order</b> <i class="fas fa-times fa-2x " id="closeBtn"></i></span></td>
 
            </tr>
            <tr id="close"></tr>
          <tr>
          <td>
          <div class="mb-3 ">
-                <label for="exampleFormControlTextarea1" class="form-label"><b>Notes</b></label>
+                <label for="exampleFormControlTextarea1" class="form-label font-italic"><b>Notes</b></label>
                 <textarea id="notes" name="notes" class="form-control w-100"  rows="3"></textarea>
               </div>
          </td>
@@ -88,12 +90,15 @@ $i =1 ;
         <!----- it have 2 parts ------->
         <!-------- first part last order------------>
         <div class="lastOrderd mt-5">
-        <h3 class="text-info">Last Orders </h3>
+        
             <div class="row">
             <div class="col-md-9 mt-3">
             <?php 
                  if(mysqli_num_rows($orderresult)  > 0)
                  {
+                   ?>
+                   <h3 class="text-info font-italic mb-2">Last Orders </h3>
+                   <?php 
                     while($row = mysqli_fetch_array($orderresult))
                     {
                         ?>
@@ -114,7 +119,7 @@ $i =1 ;
                  }
                  else 
                  {
-                     echo " <h1 class='text-info'>Welcome ,,,!</h1>"; 
+                     echo " <h1 class='text-info font-italic text-center'>Welcome  to our cafe,,,!</h1>"; 
                  }
                  ?>
             </div>
@@ -122,11 +127,14 @@ $i =1 ;
         </div>
          <!-------- first part last order------------>
          <div class="allDrinks mt-5">
-         <h3 class="text-info">All Drinks </h3>
+         <h3 class="text-info font-italic pb-4 ml-4 ">All Drinks ?</h3>
+
          <div class="row" id="DrinksData">
                  <?php 
                  if(mysqli_num_rows($result) > 0)
                  {
+                  ?>
+                  <?php 
                     while($row = mysqli_fetch_array($result))
                     {
                         ?>
@@ -149,7 +157,7 @@ $i =1 ;
                  }
                  else 
                  {
-                     echo " <h1 class='text-danger'>No Drinks Here Yet!</h1>"; 
+                     echo " <h1 class='text-danger ml-5 font-italic'>No Drinks Here Yet!</h1>"; 
                  }
                  ?>
 
@@ -174,7 +182,7 @@ $i =1 ;
 <script src="../js/bootstrap.bundle.js"></script>
 <script src="../js/homefinal.js"></script>
 
-<?php 
+<!-- <?php 
      if(!empty($_POST))
      {
        $output = '' ; 
@@ -199,6 +207,6 @@ $i =1 ;
 
 
      }
-?>
+?> -->
 </body>
 </html>
