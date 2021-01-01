@@ -99,6 +99,7 @@ if(isset($_POST['edit_data_btn'])){
         </div>
   <div style="width:50%; margin:auto;" class="col-md-8 my-3">
     <button style="background-color:brown; "class="btn btn-primary" type="submit">Submit</button>
+    <button style="background-color:brown;/" type="reset" value="Reset" class="btn btn-secondary ml-3">Reset</button>
   </div>
 </form>
 <?php

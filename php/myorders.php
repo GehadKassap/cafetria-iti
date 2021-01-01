@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../CSS/orders.css">
     <title>myorders</title>
 </head>
-<body >
+<body style="background-image:url('../imgs/cover.jpg');background-size:cover;">
 <?php include_once "nav.php" ?>
 <?php
 include_once "progress.php";
@@ -35,28 +35,43 @@ include_once "progress.php";
                      <td><?php echo $row['order_date']; ?></td>
                      <td><?php echo $row['status_Id']; ?></td>
                      <td><?php echo $row['order_action']; ?></td>
+                     <?php if ($row['status_Id']==3333): ?>
                      <td>
                          <a href="progress.php?delete=<?php echo $row['order_Id']; ?>"
-                         class="btn btn-danger">delete</a>
-                     </td>
+                         class="btn btn-danger">delete</a> 
+                     </td> 
+                     <?php else: ?>
+                     <td> </td>
+                     <?php endif; ?>
+                   
                  </tr>
                  <?php endwhile; ?>
   </tbody>
   <?php
        $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM product") or die($mysqli->error);
+       $result2 = $mysqli->query("SELECT * FROM productorder") or die($mysqli->error);
        ?> 
   <tfoot>
   <?php
                  while($row = $result->fetch_assoc()):
                   $pic= $row['product_picture']; ?>
+                  
       <!-- <tr> -->
     <td><?php echo " <img class='mt-5'style='width:200px;height:200px; border-radius:50%;' src='../imgs/HotDrinks/$pic'> "; ?>
     <div class="btn-danger" style='width:80px;height:80px;border-radius:50%;position:relative; left:152px;top:-215px;'></div>
     <div style='color:white;position:relative; left:174px;top:-267px;'> <?php echo $row['product_price']; ?> L.E</div>
-     </td>
+    <div style='font-size:35px;color:red;position:relative; left:25px;top:-92px;'> <?php echo $row['product_name']; ?></div> 
+     
+  </td>
+
 <!-- </tr>      -->
 <?php endwhile; ?>  
+
+<?php while($row = $result2->fetch_assoc()): ?>   
+  <td>
+  <div style='font-size:35px;color:red; position:relative;left:-730px;top:310px;'> <?php echo $row['quantity']; ?></div>     </td>
+  <?php endwhile; ?>   
 </tfoot>
 </table>
 
