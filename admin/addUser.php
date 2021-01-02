@@ -13,7 +13,7 @@
     <div class="container">
     
 <?php 
-$connection =new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+$connection =new mysqli("localhost","root","012256","cafe","3306") or die(mysqli_error($mysqli));
 if(isset($_POST['edit_data_btn'])){
   $id =$_POST['edit_id'];
   $query = "select * from user where id='$id' ";

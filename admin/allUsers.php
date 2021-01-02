@@ -14,7 +14,7 @@ include_once "progressUser.php";
 <div class="container">
 <h2 class= "mx-5 my-4" style="color:white;">All Users</h2>
 <?php
-       $mysqli = new mysqli("localhost","root","2721997","cafateria","3306") or die(mysqli_error($mysqli));
+       $mysqli = new mysqli("localhost","root","012256","cafe","3306") or die(mysqli_error($mysqli));
        $result = $mysqli->query("SELECT * FROM user") or die($mysqli->error);
        ?> 
 <table style="background-color:white;" class="table table-striped table-hover">

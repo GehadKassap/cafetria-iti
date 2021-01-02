@@ -9,7 +9,7 @@
           <a style="color:white;" class="nav-link active" aria-current="page" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a style="color:white;" class="nav-link active" href="#">Products</a>
+          <a style="color:white;" class="nav-link active" href="AllProducts.php">Products</a>
         </li>
         <li class="nav-item">
         <a style="color:white;" class="nav-link active" href="#">Users</a>
