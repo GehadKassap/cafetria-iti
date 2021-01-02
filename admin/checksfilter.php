@@ -14,17 +14,17 @@ $uId = "select id from `user` where `user`.`user_name` = '$userNme'";
 $usId = $db->prepare($uId);
 $usId->execute();
 $userId = $usId->fetchAll(PDO::FETCH_ASSOC);
-//$userIdd=(String)$userId;
-//var_dump(settype($userId,) );
+$userIdd=$userId[0]['id'];
+var_dump($userIdd);
 if(isset($_POST["start"],$_POST["end"])){
     $start = $_POST["start"] ;                                                       // $_COOKIE["id"]
     $end = $_POST["end"] ;
-    $sqlOrders = "select * from  `orders` where  `orders`.`user_Id` =$userId[0] and `orders`.`order_date` between '$start' and '$end'";
+    $sqlOrders = "select * from  `orders` where  `orders`.`user_Id` =$userIdd and `orders`.`order_date` between '$start' and '$end'";
     $ordr = $db->prepare($sqlOrders);
     $ordr->execute();
     $userOrder = $ordr->fetchAll(PDO::FETCH_ASSOC);
     $count=count($userOrder) ;
-//var_dump($userOrder);
+     var_dump($userOrder);
 //    echo "<tabl   e> <tr><th>Status</th>
 //                               <th>Status</th>
 //                               <th>Status</th>
@@ -85,9 +85,9 @@ if(isset($_POST["start"],$_POST["end"])){
                     <tr class='user'>
                         <td>
                             <i class='fa fa-plus-square'></i>
-                            <span><?= $userOrder[0]['user_name'] ?></span>
+                            <span><?= $userNme ?></span>
                         </td>
-                        <td><?=$userOrder[0]['total']?></td>
+                        <td><?=55?></td>
 
                     </tr>
                     <tr>
@@ -107,11 +107,11 @@ if(isset($_POST["start"],$_POST["end"])){
                                         <td>
                                             <i class='fa fa-plus-square'></i>
                                             <span>
-                                                <?= $userOrder[0][0]['order_action'] ?>
+                                                <?= $userOrder[0]['order_action'] ?>
                                                 </span>
                                         </td>
                                         <td>
-                                            <?= $userOrder[0][0]['order_price'] ?>
+                                            <?= $userOrder[0]['order_price'] ?>
                                         </td>
                                     </tr>
                                 <?php }  ?>
