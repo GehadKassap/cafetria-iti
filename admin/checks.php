@@ -1,5 +1,5 @@
 <?php
-include_once 'test.php';
+include_once 'checksbase.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,12 +14,14 @@ include_once 'test.php';
 </head>
 
 <body>
+<?php include_once 'AdminNav.php'; ?>
+
     <main class="checks">
         <section class="main-padding">
             <div class="container">
                 <h1>Checks</h1>
                 <!-- date-picker -->
-                <form action="checks.php" method="POST">
+                <form action="checksfilter.php" method="POST">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="from-group">
@@ -51,7 +53,7 @@ include_once 'test.php';
 
                                         // display users
                                         foreach ($usersNames as $userName) {
-                                            echo "<option value='strtolower($ $userName)'>$userName</option>";
+                                            echo "<option  >$userName</option>";
                                         }
                                         // $ordersQuery = "select * from orders";
                                         // $ord = $db->prepare($ordersQuery);
@@ -120,7 +122,7 @@ include_once 'test.php';
                                                 </span>
                                             </td>
                                             <td>
-                                                <?= end($users[$i])[$j]['quantity'] ?>
+                                                <?= end($users[$i])[$j]['order_price'] ?>
                                             </td>
                                         </tr>
                                         <?php }  ?>
@@ -133,45 +135,33 @@ include_once 'test.php';
                                             <td colspan='2'>
                                                 <div class='row'>
                                                     <!-- each-item -->
+
                                                     <div class='col-sm-3'>
                                                         <div class='each-order'>
-                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
+                                                            <img src='../imgs/HotDrinks/nn.jpeg' class='w-100' width='100' height='100' alt='' />
                                                             <h5>tea</h5>
                                                             <input type='text' name='tea' value='15' hidden />
-                                                            <span>15 LE</span>
-                                                            <span>2</span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- each-item -->
-                                                    <div class='col-sm-3'>
-                                                        <div class='each-order'>
-                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
-                                                            <h5>tea</h5>
-                                                            <input type='text' name='tea' value='15' hidden />
-                                                            <span>15 LE</span>
-                                                            <span>3</span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- each-item -->
-                                                    <div class='col-sm-3'>
-                                                        <div class='each-order'>
-                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
-                                                            <h5>tea</h5>
-                                                            <input type='text' name='tea' value='15 ' hidden />
-                                                            <span>15 LE</span>
-                                                            <span>5</span>
-                                                        </div>
-                                                    </div>
-                                                    <!-- each-item -->
-                                                    <div class='ol-sm-3'>
-                                                            <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
-                                                            <h5>tea</h5>
-                                                            <input type='text' name='tea' value='15' hidden />
-                                                            <span>15 LE</span>
-                                                            <span>1</span>
+                                                            <span>30 LE</span>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class='col-sm-3'>
+                                                    <div class='each-order'>
+                                                        <img src='../imgs/HotDrinks/cccc.jpg' class='w-100' width='100' height='100' alt='' />
+                                                        <h5>coffee</h5>
+                                                        <input type='text' name='tea' value='15' hidden />
+                                                        <span>40 LE</span>
+                                                    </div>
+                                                </div>
+                                                <div class='col-sm-3'>
+                                                    <div class='each-order'>
+                                                        <img src='../imgs/ColdDrinks/water.jpg' class='w-100' width='100' height='100' alt='' />
+                                                        <h5>water</h5>
+                                                        <input type='text' name='tea' value='15' hidden />
+                                                        <span>20 LE</span>
+                                                    </div>
+                                                </div>
+                </div>
                                             </td>
                                             <!-- ! ./table three -->
                                         </tr>
