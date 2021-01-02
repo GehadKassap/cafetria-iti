@@ -4,7 +4,11 @@ class Database {
 
     protected $connection;
     
-    public function __construct($dbhost='localhost', $dbuser='root', $dbpass='012256', $dbname='cafe')
+
+    
+
+    public function __construct($dbhost='localhost', $dbuser='root', $dbpass='2721997', $dbname='cafe')
+
     {
         try {
            
@@ -49,7 +53,11 @@ class Database {
 }
 
 
+<<<<<<< HEAD
 $db = new Database("localhost","root", "012256", "cafe");
+=======
+$db = new Database("localhost","root", "2721997", "cafe");
+>>>>>>> 777a6d1eb42331ae2d7202aa29d1c3d536219d31
 $result=false;
 if (isset($_FILES['profilePic']) && !empty($_FILES['profilePic']['name']) && validateFile() == 1) {
     

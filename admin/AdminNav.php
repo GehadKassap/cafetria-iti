@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a style="color:white;" class="nav-link active" aria-current="page" href="home.php">Home</a>
+          <a style="color:white;" class="nav-link active" aria-current="page" href="Admin-orders.php">Home</a>
         </li>
         <li class="nav-item">
           <a style="color:white;" class="nav-link active" href="AllProducts.php">Products</a>

@@ -13,7 +13,11 @@
     <div class="container">
     
 <?php 
-$connection =new mysqli("localhost","root","012256","cafe","3306") or die(mysqli_error($mysqli));
+
+
+
+$connection =new mysqli("localhost","root","2721997","cafe","3306") or die(mysqli_error($mysqli));
+
 if(isset($_POST['edit_data_btn'])){
   $id =$_POST['edit_id'];
   $query = "select * from user where id='$id' ";
@@ -99,6 +103,7 @@ if(isset($_POST['edit_data_btn'])){
         </div>
   <div style="width:50%; margin:auto;" class="col-md-8 my-3">
     <button style="background-color:brown; "class="btn btn-primary" type="submit">Submit</button>
+    <button style="background-color:brown;/" type="reset" value="Reset" class="btn btn-secondary ml-3">Reset</button>
   </div>
 </form>
 <?php
