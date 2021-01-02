@@ -24,9 +24,11 @@ CREATE TABLE Product(
     pro_status varchar(100) 
 );
 
+
 INSERT INTO product (product_name , product_price , product_picture, product_desc  , user_Id ,pro_status  )
 values 
 ("nascafi" , "20" , "../imgs/cover.jpg" , "loremloremlorem" , "1" , "avaiable" );
+
 CREATE TABLE Orders (
     order_Id int PRIMARY KEY AUTO_INCREMENT,
     order_date Date,
@@ -65,6 +67,11 @@ ALTER TABLE productOrder ADD CONSTRAINT FK_productOrder_product FOREIGN KEY (pro
 
 -- drop database cafeteria;
 
+
+
+INSERT INTO user (user_name, user_email, user_password, room_no, ext, user_role,user_profile_picture) VALUES ("", "", "", "", "", "admin");
+
 INSERT INTO product ()
 INSERT INTO user (user_name, user_email, user_password, room_no, ext, user_role) VALUES ("gehwad", "aaewa@aaa.com", "1qw", "1", "2", "user");
+
 INSERT INTO user (user_name, user_email, user_password, room_no, ext, user_role,user_profile_picture) VALUES ("", "", "", "", "", "user");

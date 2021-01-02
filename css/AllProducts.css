@@ -1,0 +1,52 @@
+/* ======================= Start Add Products Page Style =========================== */
+#mainSection{
+    background-image: url(../imgs/cover.jpg);
+    background-size: cover;
+    min-height: 100vh;
+   width:100%;
+    background-repeat: no-repeat;
+    
+  }
+  .overlay{
+  background-color: rgba(0,0,0,0.6);
+  min-height: 100vh;
+     
+  }
+  h1{
+    color: white;
+  }
+  label,a{
+    color: white;
+    font-weight: bold;
+  }
+  .labelTest{
+      position: absolute;
+      top:47%;
+      left:53%;
+  }
+.CatTest{
+    position: absolute;
+      top:57%;
+      left:53%; 
+}
+/* ======================= End Add Products Page Style =========================== */
+
+
+
+/* ======================= Start All Products Page Style =========================== */
+.badge{
+    font-size: 18px;
+    color: rgb(71, 167, 212);
+}
+
+
+td{
+    font-weight: bold;
+}
+.FIcon{
+    color: red;
+}
+.SIcon{
+color: rgb(236, 98, 34);
+}
+/* ======================= End All Products Page Style =========================== */
