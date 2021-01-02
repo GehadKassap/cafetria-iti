@@ -1,5 +1,5 @@
 <?php
-  $dsn = "mysql:dbname=cafeteria;dbhost=127.0.0.1;dbport=3306";
+  $dsn = "mysql:dbname=cafe;dbhost=127.0.0.1;dbport=3306";
   Define("DB_USER", "root");
   Define("DB_PASS", "135790000");
   $db = new PDO($dsn, DB_USER, DB_PASS);
@@ -12,15 +12,22 @@
         $usersNames[] = $users[$i]['user_name'];
         $usersTotal[] = $users[$i]['total'];
         $usersIds[] = $users[$i]['Id'];
-        $sqlUserOrders = "SELECT * FROM  `productOrder` , `orders`  where user_Id=  $usersIds[$i] and `orders`.`order_Id`=`productorder`.`order_Id` ORDER BY `orders`.`order_date` DESC ";
+        $sqlUserOrders = "SELECT * FROM  `productOrder` , `orders` where user_Id=  $usersIds[$i] and `orders`.`order_Id`=`productorder`.`order_Id` ORDER BY `orders`.`order_date` DESC ";
         $ordrs = $db->prepare($sqlUserOrders);
         $ordrs->execute();
         $userOrders = $ordrs->fetchAll(PDO::FETCH_ASSOC);
         array_push($users[$i],   $userOrders);
+//        var_dump(end($users[$i]))
+        for($p=0;$p<count(end($users[$i]));$p++){
+
+              $id=end($users[$i])[$p]['product_Id'];
+              $singleproductquery = "SELECT * FROM  `Product`  where `product_Id`= $id";
+              $singleproduct = $db->prepare($singleproductquery);
+              $singleproduct->execute();
+              $singleProductData = $singleproduct->fetchAll(PDO::FETCH_ASSOC);
+        }
+
     }
-
-    var_dump(end($users[0])[0]['order_date']);
-
   }else {
     echo "connection failed";
   }
