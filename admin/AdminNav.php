@@ -12,13 +12,13 @@
           <a style="color:white;" class="nav-link active" href="AllProducts.php">Products</a>
         </li>
         <li class="nav-item">
-        <a style="color:white;" class="nav-link active" href="#">Users</a>
+        <a style="color:white;" class="nav-link active" href="allUsers.php">Users</a>
         </li>
         <li class="nav-item">
-        <a style="color:white;" class="nav-link active" href="#">Manual Order</a>
+        <a style="color:white;" class="nav-link active" href="homeadminfinal.php">Manual Order</a>
         </li>
         <li class="nav-item">
-        <a style="color:white;" class="nav-link active" href="#">Checks</a>
+        <a style="color:white;" class="nav-link active" href="checks.php">Checks</a>
         </li>
       </ul>
 </div>

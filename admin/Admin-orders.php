@@ -46,8 +46,8 @@ require_once 'AdminNav.php';
                     </div>
                     <div class="modal-footer">
                         <div id="getTotalPrice" class="text-center"></div>
-                        <button type="button" class="btn btn-primary" >Deliver</button>
-                        <button type="button" class="btn btn-warning">Done</button>
+                        <button type="button" class="btn btn-primary" id="'.$row["order_Id"].'" >Deliver</button>
+                        <button type="button" class="btn btn-warning" id="'.$row["order_Id"].'">Done</button>
                     </div>
 
                 </div>
@@ -60,11 +60,12 @@ require_once 'AdminNav.php';
 
  </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.12.6/sweetalert2.min.all"></script>
-
 
 <script src="../js/jquery.js"></script>
 <script src="../js/bootstrap.bundle.js"></script>
+<script src="../jquery-3.5.1.min.js"></script>
+<script src="../package/dist/sweetalert2.all.js"></script>
+
 <!--Fetch all orders-->
 <script type="text/javascript">
     $(document).ready(function (){
@@ -94,7 +95,7 @@ require_once 'AdminNav.php';
                     data=JSON.parse(response);
                     $("#getUsername").text(data.user_name);
                     //if(data.catagory_name==='Hotdrinks') {
-                    $("#getProductPic").html('<img src="../imgs/HotDrinks/'+ data.product_picture +'" class="rounded-circle" width="80px">');
+                    $("#getProductPic").html('<img src="../imgs/'+ data.product_picture +'" class="rounded-circle" width="80px">');
                     //}
                     //else {
                     //  $("#getProductPic").html('<img src="../imgs/ColdDrinks/'+ data.product_picture +'" class="rounded-circle" width="80px">');

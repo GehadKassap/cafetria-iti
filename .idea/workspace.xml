@@ -4,8 +4,8 @@
     <list default="true" id="cb721f37-2f42-4e2e-831d-d01b06a3c366" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/Admin-orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/Admin-orders.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/AdminNav.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/AdminNav.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/admin-DB.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin-DB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/admin-actions.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/admin-actions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../cafe/new" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../new cafe" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,6 +54,8 @@
       <workItem from="1608838017814" duration="1076000" />
       <workItem from="1609097318350" duration="3848000" />
       <workItem from="1609151680034" duration="695000" />
+      <workItem from="1609577845954" duration="1917000" />
+      <workItem from="1609594823495" duration="4112000" />
     </task>
     <servers />
   </component>
