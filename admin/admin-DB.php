@@ -53,5 +53,11 @@ where u.Id=o.user_Id order by order_date desc;";
 
 
     }
-
+//change order status
+public function OrderStatus($id){
+          $sql="update orders set status_Id=1 where order_Id=id;";
+        $stmt=$this->conn->prepare($sql);
+      $stmt->execute(['id'=>$id]);
+    return true;
+}
 }
