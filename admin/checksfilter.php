@@ -25,33 +25,12 @@ if(isset($_POST["start"],$_POST["end"])){
     $userOrder = $ordr->fetchAll(PDO::FETCH_ASSOC);
     $count=count($userOrder) ;
      var_dump($userOrder);
-//    echo "<tabl   e> <tr><th>Status</th>
-//                               <th>Status</th>
-//                               <th>Status</th>
-//                               <th>Action</th> </tr>" ;
-//    $i=0;
-//    while($row = $userOrder){
-//        echo "<tr ><td>" .$userOrder[$i]['order_action'] ."</td>
-//                     <td>" .$userOrder[$i]['order_date'] ."</td>
-//                     <td>" .$userOrder[$i]['notes'] ."</td>
-//                    " ;
-//        $i++;
-//        if ($row['status'] == "processing"){
-//
-//            echo "<td>  <a href='delete-order.php?delete=" . $row["order_id"] ." '> <input type='button' value='Delete'> </a></td>" ;
-//
-//        }else{
-//            echo "<td> </td>" ;
-//        }
-//
-//        echo  "</tr>"  ;
-//        // var_dump ($row) ;
-//    } echo "</table>" ;
-
-
-
 }
-
+$total=0;
+for($x=0;$x<$count;$x++){
+    $total=$total+$userOrder[$x]['order_price'];
+}
+var_dump($total);
 
 ?>
 <!DOCTYPE html>
@@ -87,56 +66,93 @@ if(isset($_POST["start"],$_POST["end"])){
                             <i class='fa fa-plus-square'></i>
                             <span><?= $userNme ?></span>
                         </td>
-                        <td><?=55?></td>
-
+                        <td>
+                            <i class='fa fa-plus-square'></i>
+                            <span><?= $total?></span>
+                        </td>
                     </tr>
                     <tr>
                         <!-- ! table two  -->
 
-                        <td colspan='2'>
+                        <td colspan='3'>
                             <table class='table'>
                                 <thead class='thead-light'>
+                                <?php if(!$count) {?>
+                                       <tr class='user-data'>
+                                    <td>
+                                       <center style="font-size: large ; color:red" >oops ! , No orders at this date</center>
+                                    </td>
+                                </tr>
+
+                                <?php }else{?>
                                 <tr>
-                                    <th scope='col'>order date</th>
+                                    <th scope='col'>order status</th>
                                     <th scope='col'>Amount</th>
+                                    <th scope='col'>order date</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php for($j=0;$j<$count;$j++){?>
+
+                                 <?php for($j=0;$j<$count;$j++){?>
                                     <tr class='user-data'>
                                         <td>
                                             <i class='fa fa-plus-square'></i>
                                             <span>
-                                                <?= $userOrder[0]['order_action'] ?>
+                                                <?= $userOrder[$j]['order_action'] ?>
                                                 </span>
                                         </td>
                                         <td>
-                                            <?= $userOrder[0]['order_price'] ?>
+                                            <?= $userOrder[$j]['order_price'] ?>
+                                        </td>
+                                        <td>
+                                            <span>
+
+                                            <?= $userOrder[$j]['order_date'] ?>
+                                            </span>
                                         </td>
                                     </tr>
-                                <?php }  ?>
-
-
-
 
                                 <tr>
                                     <!-- ! table three -->
                                     <td colspan='2'>
                                         <div class='row'>
                                             <!-- each-item -->
+
                                             <div class='col-sm-3'>
                                                 <div class='each-order'>
-                                                    <img src='https://via.placeholder.com/100' class='w-100' width='100' height='100' alt='' />
+                                                    <img src='../imgs/HotDrinks/nn.jpeg' class='w-100' width='100' height='100' alt='' />
                                                     <h5>tea</h5>
                                                     <input type='text' name='tea' value='15' hidden />
-                                                    <span>15 LE</span>
-                                                    <span>2</span>
+                                                    <span>30 LE</span>
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
-                                    <!-- ! ./table three -->
-                                </tr>
+                                        <div class='col-sm-3'>
+                                            <div class='each-order'>
+                                                <img src='../imgs/HotDrinks/cccc.jpg' class='w-100' width='100' height='100' alt='' />
+                                                <h5>coffee</h5>
+                                                <input type='text' name='tea' value='15' hidden />
+                                                <span>40 LE</span>
+                                            </div>
+                                        </div>
+                                        <div class='col-sm-3'>
+                                            <div class='each-order'>
+                                                <img src='../imgs/ColdDrinks/water.jpg' class='w-100' width='100' height='100' alt='' />
+                                                <h5>water</h5>
+                                                <input type='text' name='tea' value='15' hidden />
+                                                <span>20 LE</span>
+                                            </div>
+                                        </div>
+        </div>
+        </td>
+        <!-- ! ./table three -->
+        </tr>
+                                <?php }  ?>
+                                <?php }  ?>
+
+
+
 
                                 </tbody>
                             </table>
