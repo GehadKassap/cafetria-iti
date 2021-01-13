@@ -20,4 +20,3 @@ if(isset($_POST['update_btn'])){
         header('location: addUser.php');
     }
 }
-?>

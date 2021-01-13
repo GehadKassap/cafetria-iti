@@ -1,7 +1,7 @@
 <?php
 $dsn = "mysql:dbname=cafe;dbhost=127.0.0.1;dbport=3306";
 Define("DB_USER", "root");
-Define("DB_PASS", "135790000");
+Define("DB_PASS", "");
 $db = new PDO($dsn, DB_USER, DB_PASS);
 if(!$db) {
     die("Connection Failed") ;
@@ -15,7 +15,7 @@ $usId = $db->prepare($uId);
 $usId->execute();
 $userId = $usId->fetchAll(PDO::FETCH_ASSOC);
 $userIdd=$userId[0]['id'];
-var_dump($userIdd);
+//var_dump($userIdd);
 if(isset($_POST["start"],$_POST["end"])){
     $start = $_POST["start"] ;                                                       // $_COOKIE["id"]
     $end = $_POST["end"] ;
@@ -24,13 +24,13 @@ if(isset($_POST["start"],$_POST["end"])){
     $ordr->execute();
     $userOrder = $ordr->fetchAll(PDO::FETCH_ASSOC);
     $count=count($userOrder) ;
-     var_dump($userOrder);
+//     var_dump($userOrder);
 }
 $total=0;
 for($x=0;$x<$count;$x++){
     $total=$total+$userOrder[$x]['order_price'];
 }
-var_dump($total);
+//var_dump($total);
 
 ?>
 <!DOCTYPE html>
